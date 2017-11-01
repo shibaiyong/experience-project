@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习</title>
+</head>
+<body>    
+    <h3>哈哈哈</h3>   
+</body>
+      <script src="resource/vue.js"></script>
+      <script>
+          //只有Vue data中的数据是响应式的。
+          var vm=new Vue({
+              data:{
+                  a:1,
+                  b:2
+              },
+              created:function(){
+                  console.log(this.a)
+                  console.log(this.b)
+              }
+          })
+          //vue 实力提供了方便的属性和方法。
+          var num=vm.$data.a;
+          console.log(num)
+      </script>
+</html>

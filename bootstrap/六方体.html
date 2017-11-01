@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.big-container{
+				width:400px;
+				height: 400px;
+				background:#ccc;
+			}
+			.container{
+				width:400px;
+				height: 400px;
+				background:#teal;
+				position: relative;
+				transform-style: preserve-3d;
+				perspective: 800px;
+			}
+			.container li{
+				position: absolute;
+				width:400px;
+				height: 400px;
+				top:0;
+				left:0;
+				
+			}
+			.container li:nth-child(1){
+				background: green;
+				opacity: 0.5;
+				transform:translateX(400px) rotateY(90deg);
+				transform-origin: left;
+			}.container li:nth-child(2){
+				background: red;
+			}
+			.big-container:hover .container{
+				transform: translate(0) rotateY(-90deg);
+				transform-origin: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="big-container">
+			<ul class="container">
+				<li>1</li>
+				<li>2</li>				
+			</ul>
+		</div>
+	</body>
+</html>

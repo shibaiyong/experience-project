@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        .red{
+            background: red;
+        }
+        .blue{
+            background: blue;
+        }
+        .black{
+            background: black;
+        }
+        .pink{
+            background: pink;
+        }
+        .red{
+            background: red;
+        }
+        .green{
+            background: green;
+        }
+        .red{
+            background: red;
+        }
+        .orange{
+            background: orange;
+        }
+        .yellow{
+            background: yellow;
+        }
+        .purple{
+            background: purple;
+        }
+        .brown{
+            background: brown;
+        }
+        .h{
+            height: 100px;
+        }
+        .container{
+            width:100%;    
+        }
+        @media screen and (max-width:992px) {
+            .col-md-3{
+                width:50%;
+                float: left;
+            }
+        } 
+      
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 red h">.col-md-4</div>
+        <div class="col-md-4 blue h">.col-md-4</div>
+        <div class="col-md-4 pink h">.col-md-4</div> 
+    </div> 
+    <div class="row">
+        <div class="col-md-3 yellow h">.col-md-3</div>
+        <div class="col-md-3 orange h">.col-md-3</div>
+        <div class="col-md-3 green h">.col-md-3</div>
+        <div class="col-md-3 black h">.col-md-3</div> 
+    </div>
+    <div class="row">
+        <div class="col-md-6 purple h">.col-md-6</div>
+        <div class="col-md-6 brown h">.col-md-6</div> 
+    </div>
+    <nav aria-label="Page navigation">
+            <ul class="pagination">
+              <li>
+                <a href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li>
+                <a href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+      </nav>
+</div>    
+</body>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(function(){
+        var wDoc=$(document).width();
+        var wWindow=$(window).width();
+        var wDody=$(document.body).width();
+        var hDoc=$(document).height();
+        var hWindow=$(window).height();
+        var hDody=$(document.body).height();
+       console.log(wDoc,wWindow,wDody)
+       console.log(hDoc,hWindow,hDody)
+    })
+    //三个结果是一样的。
+    //window 和 document 都是当前窗口的可视区域的高度、宽度；
+    //对于container这一层有没有都行
+</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>列表渲染</title>
+		<style>
+			#rootel{
+				width: 500px;
+				height: 500px;
+				border:1px solid red;
+			}
+			#rootel .roottip{
+				border: 1px dashed #00BFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="rootel">
+			<p class="roottip">我是根元素</p>
+			<ul>
+				<li v-for=""></li>
+			</ul>
+			<aaa></aaa>
+		</div>
+		<template id="liebiao">
+			<div>
+			<h3>列表渲染</h3>
+			<!--<p>{{changeSelf()}}</p>--><!--都能执行-->
+			<ul>
+				<li v-for="(value,key) in obj">{{key}}:{{value}}</li>
+			</ul>
+			</div>
+		</template>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var Child={
+		template:"#liebiao",
+		data(){
+			return {
+				obj:{
+					firstname:'shi',
+					lastname:'baiyong',
+					age:23
+				},
+				changeSelf:function(){
+					alert('i am assigned')
+				}
+			}
+		},
+		mounted:function(){
+			console.log(this)
+			this.$set(this.obj,'sex','male')
+		}
+	}
+	var vm=new Vue({
+		el:"#rootel",
+		data(){
+			
+			return {
+				
+			}
+		},
+		components:{
+			'aaa':Child
+		}
+	})
+</script>

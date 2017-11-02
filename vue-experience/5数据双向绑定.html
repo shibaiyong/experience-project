@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="table">
+			<p>单个复选框</p>
+			<input type="checkbox" id="singal" v-model="checked"/>
+			<label for="singal">{{checked}}</label>
+			<hr/>
+			<p>多个复选框</p>
+			<input type="checkbox" id="google" value='google' v-model="checkname"/>
+			<label for="google">google</label>
+			<input type="checkbox" id="baidu" value='baidu' v-model="checkname"/>
+			<label for="baidu">baidu</label>
+			<input type="checkbox" id="360" value='360' v-model="checkname"/>
+			<label for="360">360</label>
+			<h3>选择的值为：{{checkname}}</h3>
+		</div>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:"#table",
+		data:function(){
+			return {
+				checked:true,
+				checkname:[]
+			}
+		}
+	})
+</script>

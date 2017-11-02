@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="ex">
+			<span>nuture:{{text1}}</span>
+			<input v-model="text1">
+			<p>reversertext:{{reverseText}}</p>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="js/vue.js" ></script>
+<script>
+	var vm=new Vue({
+		el:"#ex",
+		data(){
+			return {
+				text1:'hello word',
+				changeText:'word hello'
+			}
+		},
+		computed:{
+			reverseText:function(){
+				return this.text1.split("").reverse().join('')
+			}
+		}
+	})
+</script>

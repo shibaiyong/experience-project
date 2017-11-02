@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="container">
+			<div v-if="loginway=='user'">
+				<p>username</p>
+				<input type="text" placeholder="用户名登录"/>
+			</div>
+			<div v-else>
+				<p>EmailName</p>
+				<input type="text" placeholder="邮箱登录"/>
+			</div>
+			<button @click="changeLoginway('user')">用户名登录</button>
+			<button @click="changeLoginway('email')">邮箱登录</button>
+		</div>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el:"#container",
+		data(){
+			return {
+				username:"user",
+				emailname:'email',
+				loginway:''
+			}
+		},
+		methods:{
+			changeLoginway:function(way){
+				if(way==this.username){
+					this.loginway='user'
+				}else{
+					this.loginway='email'
+				}
+			}
+		}
+	})
+</script>

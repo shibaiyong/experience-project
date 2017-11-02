@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="rootCom">
+			
+			<father-c></father-c>
+		</div>
+		
+		<template id="fatherCom">
+			<div class="f">
+				<p>儿子打了我:<span style="color:red;">{{num}}</span>次;</p>
+				<son-c v-on:increase='hitNum'></son-c>
+			</div>
+		</template>
+		
+		<template id="sonCom">
+			<div class="s">
+				<button @click='numincrease'>儿子打父亲</button>
+			</div>
+		</template>
+		
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+	var Son={
+		template:"#sonCom",
+		data:function(){
+			return {
+				s1:''
+			}
+		},
+		methods:{
+			numincrease:function(){
+				this.$emit('increase')
+			}
+		},
+		mounted:function(){
+			
+		}
+	}
+	var Father={
+		template:"#fatherCom",
+		data:function(){
+			return {
+				num:0
+			}
+		},
+		methods:{
+			hitNum:function(){
+				this.num++;
+			}
+		},
+		mounted:function(){
+			
+		},
+		components:{
+			'sonC':Son
+		}
+	}
+	var vm=new Vue({
+		el:".rootCom",
+		
+		components:{
+			'fatherC':Father
+		}
+		
+	})
+</script>

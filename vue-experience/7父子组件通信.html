@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="root">
+			<data-com :message="mes" messagee="mes"></data-com>
+			<button @click="changeMes">改变父亲传给儿子的消息mes</button>
+		</div>
+		<template id="subcomponent">
+			<div>
+				<h3>验证一些关于data的问题</h3>
+				<button @click="counter+=1">增加1</button>
+				<p>{{counter}}</p>
+				<p>这是父组件传给子组件的：{{message}}</p>
+				<p>这是父组件传给子组件的messagee：{{messagee}}</p>
+			</div>
+		</template>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var Child={
+		template:"#subcomponent",
+		data:function(){
+			return {
+				counter:0
+			}
+		},
+		props:['message','messagee'],
+		mounted:function(){
+			console.log(this.message)
+		}
+	}
+	var vm=new Vue({
+		el:"#root",
+		data:function(){
+			return {
+				checked:true,
+				checkname:[],
+				mes:'this is message to send farther',
+				str:''
+			}
+		},
+		components:{
+			'data-com':Child
+		},
+		methods:{
+			changeMes(){
+				this.mes+='a'
+			}
+		}
+	})
+</script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>class-style</title>
+		<style>
+			.box{
+				width:500px;
+				height:300px;
+				background: deepskyblue;
+			}
+			.active{
+				background:red;
+			}
+			.border-line{
+				border:2px dashed yellow
+			}
+			.border-line2{
+				border:2px solid blue
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" v-bind:class="[isLine?'border-line':'border-line2',isActive?'active':'']">
+			<bbb></bbb>
+			<button @click="isChange">改变样式</button>
+		</div>
+		<template id="aaa">
+			<h2>{{message}}</h2>
+		</template>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var Child={
+		template:"#aaa",
+		data:function(){
+			return {
+				message:"this is child-component about class and style"
+			}
+		}
+	}
+	var vm = new Vue({
+		el:".box",
+		data:function(){
+			return {
+				isActive:true,
+				isLine:false
+			}
+		},
+		methods:{
+			isChange:function(){
+				this.isActive=!this.isActive;
+				this.isLine=!this.isLine;
+			}
+		},
+		mounted:function(){
+			alert("component has mounted")
+		},
+		components:{
+			"bbb":Child
+		}
+	})
+</script>

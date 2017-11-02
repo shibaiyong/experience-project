@@ -5,12 +5,88 @@
 		<title>vertification</title>
 	</head>
 	<body>
-		<form>
-			<label>用户名：</label><input type="text"><br/>
-			<label>电话：</label><input type="password"><br/>
-			<label>生日：</label><input type="emil"><br/>
-			<label>邮编：</label><input type="file"><br/>
-			
+		<div class="container"></div>
+		<form id="myForm" action="https://www.baidu.com">
+			<label>用户名：</label><input type="text" name="username"><br/>
+			<label>密码：</label><input type="password" name="password"><br/>
+			<label>确认密码：</label><input type="password" name="con_password"><br/>
+			<label>邮箱：</label><input type="text" name="emil"><br/>
+			<label>邮编：</label><input type="text" name="zipcode"><br/>
+			<label>文件：</label><input type="file" name="fi"><br/>
+			<input type="submit" value="提交"/>
 		</form>
+		<div class="error"></div>
 	</body>
 </html>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var str='a';
+		$('input[name=username]').keydown(function(){			
+			str+="a";
+			$('.container').text(str);
+		})
+	
+		var validate=$("#myForm").validate({
+			debug:false,
+			//提交表单后第一个未通过验证的表单获得焦点。
+			focusInvalid:false,
+			//是否在获得焦点时验证
+			//onfocusout:true,
+			//是否在鼠标按下时验证
+			//onkeyup:true,
+			//获取焦点是溢出错误提示
+			focusCleanup:true,
+			rules:{
+				"username":{
+					required:true,
+				},
+				"password":{
+					required:true,
+				},
+				"con_password":{
+					required:true,
+				},
+				"emil":{
+					required:true,
+				},
+				"zipcode":{
+					required:true,
+				},
+				"fi":{
+					required:true,
+				}
+			},
+			messages:{
+				"username":{
+					required:"必填",
+				},
+				"password":{
+					required:"必填",
+				},
+				"con_password":{
+					required:"必填",
+				},
+				"emil":{
+					required:"必填",
+				},
+				"zipcode":{
+					required:"必填",
+				},
+				"fi":{
+					required:"必填",
+				}
+			},
+			errorPlacement: function(error, element) {
+//			    if (element.is(":radio"))
+//			        error.appendTo(element.parent().next().next());
+//			    else if (element.is(":checkbox"))
+//			        error.appendTo(element.next());
+//			    else
+//			        error.appendTo(element.parent().next());
+			},
+			errorLabelContainer: $("div.error")
+		})
+	})
+</script>

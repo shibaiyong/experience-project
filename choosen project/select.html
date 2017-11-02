@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="select.css" />
+		<style>
+			option{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<select>
+			<option selected value="">--请选择国家--</option>
+		</select>
+		<select class="my_select1">
+			<option selected value="">--请选择省份--</option>
+		</select>
+		<select class="my_select2">
+			<option selected value="">--请选择城市--</option>
+		</select>
+		<select class="my_select3">
+			<option selected value="">--请选择乡镇--</option>
+		</select>
+	</body>
+</html>
+<script type="text/javascript" src="jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="select.js" ></script>
+<script>
+	var obj={		
+		"山东":{
+			"临沂":["莒南","沂水","苍山"],
+			"淄博":["张店","淄川","琳子"]
+		},
+		"北京":{
+			"朝阳":["十里河","健德门","国贸","北土城"],
+			"海淀":["aaa","bbb","ccc","ddd"],
+			"昌平":["沙河","二拨子","碧水庄园","北郊农场桥西"]
+		},
+		"河北":{
+			"city1":['country1','country2','country3'],
+			"city2":['country11','country22','country33']
+		}				
+	}
+	addProv();//初始化省份。
+	
+	//初始化插件
+	$(".my_select1,.my_select2,.my_select3").chosen({
+		 disable_search_threshold: 2,//少于n项时，隐藏单选框的搜索框
+		  no_results_text: 'Oops, nothing found!',//没有搜索到匹配项时，显示的文字
+		  width: '30%',
+		  placeholder_text_single:'--请选择乡镇--',//没有选中时的站位文字
+		 search_contains:'true', //是否从第一个字符开始搜索
+		 inherit_select_classes:true  //是否将继承select的类名
+	});
+	$(".my_select1").on('change',function(){
+		var val=$(this).val();
+		var str_city='';
+		$(".my_select2 option").empty();//清空插件容器中的option,防止内容追加
+		for(var city in obj[val]){
+			str_city+="<option value="+val+"_"+city+">"+city+"</option>"
+		}
+		$(".my_select2").append(str_city);
+		$('.my_select2').trigger('chosen:updated');
+	});
+	$(".my_select2").on('change',function(e,params){
+		console.log(typeof params.selected);
+		console.log($(this).val());//以上两个值是一样的。
+		var _prov=params.selected.split("_")[0];
+		var _city=params.selected.split("_")[1];
+		var country=(obj[_prov])[_city];
+		var str_country='';
+		$(".my_select3 option").empty();
+		for(var i=0;i<country.length;i++){
+			
+			str_country+="<option>"+country[i]+"</option>";
+		}
+		$(".my_select3").append(str_country);
+		$('.my_select3').trigger('chosen:updated');
+	});
+		
+	//被调用的方法
+	function addProv(){
+		var str_prov=''
+		for(var prov in obj){
+			str_prov+="<option>"+prov+"</option>"
+		}
+		$(".my_select1").append(str_prov)
+		$('.my_select1').trigger('chosen:updated');		
+	}	
+</script>

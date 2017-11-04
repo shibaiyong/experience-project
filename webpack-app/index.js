@@ -1,3 +1,8 @@
 var greeter=require("./greeter.js");
-console.log(greeter())
-document.getElementById("box").appendChild(greeter())
+var inpevent=require("./input-event.js");
+
+var ele=$('.inp')
+
+
+document.getElementById("box").appendChild(greeter())//显示hello wrod;
+inpevent(ele)//检测input 事件

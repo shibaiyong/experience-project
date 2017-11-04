@@ -20,5 +20,12 @@
 		  <option>4</option>
 		  <option>5</option>
 		</select>
+		<input type="text"/>
 	</body>
 </html>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+	$("input[type='text']").keyup(function(){
+		console.log($(this).val())
+	})
+</script>

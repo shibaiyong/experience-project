@@ -68,8 +68,13 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var greeter=__webpack_require__(1);
-console.log(greeter())
-document.getElementById("box").appendChild(greeter())
+var inpevent=__webpack_require__(2);
+
+var ele=$('.inp')
+
+
+document.getElementById("box").appendChild(greeter())//显示hello wrod;
+inpevent(ele)//检测input 事件
 
 
 /***/ }),
@@ -81,6 +86,18 @@ module.exports=function(){
 	var greet=document.createElement('div');
 	greet.innerHTML='hello word';
 	return greet;
+}
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports=function(elementSe){
+	
+	elementSe.keyup(function(){
+		$('.input-box').text($(this).val())
+	})
 }
 
 

@@ -6,15 +6,18 @@
 	</head>
 	<body>
 		<div id="root">
-			<data-com></data-com>
-			<data-com></data-com>
-			<data-com></data-com>
+			<span style="color:red">父组件同步prop{{num}}</span>
+			<data-com :foo.sync='num'></data-com>
+			<!--上面的指令修饰符其实是一个语法糖,会被解析成-->
+			<!--<data-com :foo="num" @update:foo="val=>num=val"></data-com>-->
+			
 		</div>
 		<template id="subcomponent">
 			<div>
 				<h3>验证一些关于data的问题</h3>
 				<button @click="counter+=1">增加1</button>
 				<p>{{counter}}</p>
+				<span style="sty" @click="changeProp">子组件改变(prop)num{{foo}}</span>
 			</div>
 		</template>
 	</body>
@@ -32,12 +35,25 @@
 		}
 	}
 */
-	
+	var num=0;
+	function(val){
+		num==val	
+	}
 	var Child={
 		template:"#subcomponent",
+		props:["foo"],
 		data:function(){
 			return {
-				counter:0
+				counter:0,
+				sty:{
+					background:"red"
+				},
+				ffoo:this.foo//特别注意：vue不允许子组件主动更改自己的属性。
+			}
+		},
+		methods:{
+			changeProp:function(){
+				this.$emit('update:foo',++this.ffoo);
 			}
 		}
 	}
@@ -46,7 +62,8 @@
 		data:function(){
 			return {
 				checked:true,
-				checkname:[]
+				checkname:[],
+				num:0
 			}
 		},
 		components:{

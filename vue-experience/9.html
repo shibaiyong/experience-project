@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义组件v-model</title>
+	</head>
+	<body>
+		<div id="root">
+			
+		</div>
+		<template id="sub1">
+			<input ref="checked" type="checkbox"/>
+		</template>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	var Child={
+		template:'#sub1',
+		data:function(){
+			return {
+				valsub:''
+			}
+		}
+	}
+	var vm=new Vue({
+		el:"#root",
+		data:function(){
+			return {
+				val:''
+			}
+		},
+		components:{}
+	})
+</script>

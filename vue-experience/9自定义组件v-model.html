@@ -6,10 +6,14 @@
 	</head>
 	<body>
 		<div id="root">
-			
+			<com-check v-model="boole"></com-check>
+			<p>父组件{{boole}}</p>
 		</div>
 		<template id="sub1">
-			<input ref="checked" type="checkbox"/>
+			<div>
+			<input ref="ch" type="checkbox"/>
+			<p>子组件{{checked}}</p>
+			</div>
 		</template>
 	</body>
 </html>
@@ -17,9 +21,19 @@
 <script type="text/javascript">
 	var Child={
 		template:'#sub1',
+		model:{
+			prop:'checked',
+			event:'balbala'
+		},
+		props:['checked'],
 		data:function(){
 			return {
 				valsub:''
+			}
+		},
+		methods:{
+			changeChildStatus:function(){
+				alert()
 			}
 		}
 	}
@@ -27,9 +41,12 @@
 		el:"#root",
 		data:function(){
 			return {
-				val:''
+				val:'',
+				boole:true
 			}
 		},
-		components:{}
+		components:{
+			'comCheck':Child
+		}
 	})
 </script>

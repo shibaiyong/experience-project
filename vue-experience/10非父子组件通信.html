@@ -30,7 +30,7 @@
 		<template id="subone">
 			<div>
 				<h3 :style='styleone'>我是子组件subone</h3>
-				<button @click='sendMes'>发送消息</button>
+				<button @mouseover='sendMes'>发送消息</button>
 			</div>
 		</template>
 		<template id="subtwo">
@@ -62,7 +62,7 @@
 			}
 		},
 		mounted:function(){
-			alert('组件subone创建完成');
+			
 		}
 		
 	}
@@ -103,7 +103,6 @@
 		components:{
 			"subone":Subone,
 			"subtwo":Subtwo
-		}
-		
+		}	
 	})
 </script>

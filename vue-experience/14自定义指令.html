@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义指令</title>
+		<style type="text/css">
+			.slide-fade-enter-active {
+			  transition: all .3s ease;
+			}
+			.slide-fade-leave-active {
+			  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+			}
+			.slide-fade-enter, .slide-fade-leave-to
+			/* .slide-fade-leave-active for below version 2.1.8 */ {
+			  transform: translateX(10px);
+			  opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='root'>
+			<comone></comone>
+		</div>
+		
+		<template id='subone'>
+			<div>
+			<h3>{{subonemes}}</h3>
+			<p v-demo:foo.a.b='message'>this is directive</p>
+			<button @click='show=!show'>toggle</button>
+			<transition name='slide-fade'>
+				<div v-if='show'>
+				<p>这是有过渡效果的元素</p>
+				<input type="text" v-focus/>
+				</div>
+			</transition>
+			</div>
+		</template>
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	Vue.directive('demo',function(el,binding){
+		var s=JSON.stringify;
+		console.log(typeof binding.name)
+		el.innerHTML="name:"+binding.name+"<br>"+
+					 "value"+s(binding.value)+"<br>"+
+					 "expression"+s(binding.expression)+"<br>"+
+					 "arg"+s(binding.arg)+"<br>"+
+					 "modifiers"+s(binding.modifiers)+"<br>"
+	})
+	var Subone={
+		template:'#subone',
+		data:function(){
+			return {
+				subonemes:'我是组件一',
+				show:true,
+				message:'this is demo'
+			}			
+		},
+		methods:{
+			
+		},
+		directives:{
+			focus:{
+				inserted:function(el){
+					console.log(el)
+					el.focus();
+				}
+			}
+		}
+	}
+	var vm=new Vue({
+		el:'#root',
+		components:{
+			'comone':Subone
+		}
+	})
+</script>

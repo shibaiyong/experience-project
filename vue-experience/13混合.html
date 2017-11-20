@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>混合(渐渐被淘汰)</title>
+	</head>
+	<body>
+		<div id='root'>
+			<sub-one></sub-one>
+		</div>
+		
+	</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+/*
+	var mixin={
+		data:function(){
+			return {
+				mixmin:'this is mixmin'
+			}
+		},
+		methods:function(){
+			console.log('this is mixmin')
+		}
+	}
+	var subone={
+		mixins:[mixin],
+		template:"<div class='subone'><h3>{{mixmin}}</h3></div>",
+		data:function(){
+			return {
+				
+			}
+		}
+	}
+	var vm= new Vue({
+		el:'#root',
+		data:function(){
+			return {
+				
+			}
+		},
+		components:{
+			"subOne":subone
+		}
+	})
+*/
+/*---------方法的全局混入-----------------*/
+Vue.mixin({
+		data:function(){
+			return {
+				mixmin:'this is mixmin',
+				subone:'this is mixmin subone'
+			}
+		},
+		mounted:function(){			
+			console.log(this.subone)
+		},
+		methods:{
+			consol:function(){
+				console.log('this is mixmin methods')
+			}
+		}
+	})
+
+	var subone={
+		template:"<div class='subone'><h3>{{mixmin}}</h3></div>",
+		data:function(){
+			return {
+				subone:'this is subone'
+			}
+		},
+		mounted:function(){
+			this.consol();
+			console.log(this);
+			this.aler()
+		}
+	}
+	Vue.prototype.aler=function(){
+		alert('全局方法')
+	}
+	var vm= new Vue({
+		el:'#root',
+		data:function(){
+			return {
+				
+			}
+		},
+		components:{
+			"subOne":subone
+		},
+		mounted:function(){
+			console.log(this.aler)
+		}
+	})
+	
+</script>

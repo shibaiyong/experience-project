@@ -37,7 +37,7 @@
 		},
 		methods:{
 			numincrease:function(){
-				this.$emit('increase')
+				this.$emit('increase','100')
 			}
 		},
 		mounted:function(){
@@ -52,8 +52,8 @@
 			}
 		},
 		methods:{
-			hitNum:function(){
-				this.num++;
+			hitNum:function(ac){
+				console.log(ac)
 			}
 		},
 		mounted:function(){

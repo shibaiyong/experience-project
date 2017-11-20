@@ -65,7 +65,7 @@
 		$('.my_select2').trigger('chosen:updated');
 	});
 	$(".my_select2").on('change',function(e,params){
-		console.log(typeof params.selected);
+		console.log(params.selected);
 		console.log($(this).val());//以上两个值是一样的。
 		var _prov=params.selected.split("_")[0];
 		var _city=params.selected.split("_")[1];

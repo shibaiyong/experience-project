@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>iCheck-exam</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="skins/flat/blue.css">
+		<link rel="stylesheet" href="skins/flat/red.css">
+		<script src="icheck.js"></script>
+	</head>
+	<body>
+		<input type="checkbox" id="checkbox-1" class="che"/>
+		<input type="checkbox" id="checkbox-2" class="che"/>
+		<input type="checkbox" id="checkbox-3" class="che"/>
+		<input type="checkbox" id="checkbox-4" class="che"/>
+		<input type="radio" id="radio-1" name="one" class="rad">
+		<input type="radio" id="radio-2" name="one" class="rad">
+	</body>
+	
+	<script type="text/javascript">
+		//iCheck 中的click事件会被拦截
+		$(".rad").iCheck({
+              checkboxClass: 'icheckbox_flat-red',
+              radioClass: 'iradio_flat-red',
+              increaseArea: '20%'
+        })
+		
+		$(".che").iCheck({
+              checkboxClass: 'icheckbox_flat-blue',
+              radioClass: 'iradio_flat-blue',
+              increaseArea: '20%'
+        })
+		
+		$("#checkbox-1").on('ifChanged',function(){	
+			if($(this).prop('checked')){	
+//				$("#checkbox-2").iCheck('check');
+				$(this).nextAll().iCheck('check');
+				$(this).parent().siblings().find('input[type=checkbox]').iCheck('check')
+			}else{
+				$(this).parent().siblings().find('input[type=checkbox]').iCheck('uncheck');
+			}
+		})
+//		$("#checkbox-2").click(function(){
+//			console.log($(this).prop('checked'))
+//		})
+	</script>
+</html>

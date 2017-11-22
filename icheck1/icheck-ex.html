@@ -19,6 +19,9 @@
 	
 	<script type="text/javascript">
 		//iCheck 中的click事件会被拦截
+		$("#checkbox-1").on('ifCreated',function(){
+			$(this).iCheck('check');
+		})
 		$(".rad").iCheck({
               checkboxClass: 'icheckbox_flat-red',
               radioClass: 'iradio_flat-red',
@@ -34,10 +37,12 @@
 		$("#checkbox-1").on('ifChanged',function(){	
 			if($(this).prop('checked')){	
 //				$("#checkbox-2").iCheck('check');
-				$(this).nextAll().iCheck('check');
+				//$(this).nextAll().iCheck('check');
 				$(this).parent().siblings().find('input[type=checkbox]').iCheck('check')
+				//$(this).parent().siblings().iCheck('check')
 			}else{
 				$(this).parent().siblings().find('input[type=checkbox]').iCheck('uncheck');
+				//$(this).parent().siblings().iCheck('uncheck');
 			}
 		})
 //		$("#checkbox-2").click(function(){

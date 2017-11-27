@@ -35,9 +35,7 @@
         })
 		
 		$("#checkbox-1").on('ifChanged',function(){	
-			if($(this).prop('checked')){	
-//				$("#checkbox-2").iCheck('check');
-				//$(this).nextAll().iCheck('check');
+			if($(this).prop('checked')){					
 				$(this).parent().siblings().find('input[type=checkbox]').iCheck('check')
 				//$(this).parent().siblings().iCheck('check')
 			}else{

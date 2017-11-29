@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上传文件练习</title>
+		<style>
+			iframe{
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="recieve-file.php" method="post" enctype="multipart/form-data">
+			<input type="file" class="uploadf" name='file'/>
+			<input type="submit" value="提交" name='submit'/>
+		</form>
+		<iframe src="recieve-file.php" frameborder="0" height="200px" width='200px'>
+			
+		</iframe>
+	</body>
+</html>

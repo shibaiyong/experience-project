@@ -43,16 +43,18 @@
 			}
 			
 			/*（默认样式）Default*/
-			.btn-da
+		
 			.btn-default {
-		  color: #333;
+		  color: #00a1e9;
 		  background-color: #fff;
+		   border:none;
+		   
 		  border-color: #ccc;
 			}
 			.btn-default:focus,
 			.btn-default.focus {
-			  color: #333;
-			  background-color: #e6e6e6;
+			  color: #00a1e9;
+			  background-color: white;
 			  border-color: #8c8c8c;
 			}
 			.btn-default:hover {
@@ -63,7 +65,7 @@
 			.btn-default:active,
 			.btn-default.active,
 			.open > .dropdown-toggle.btn-default {
-			  color: #333;
+			  color: #00a1e9;
 			  background-color: #e6e6e6;
 			  border-color: #adadad;
 			}
@@ -76,7 +78,7 @@
 			.btn-default:active.focus,
 			.btn-default.active.focus,
 			.open > .dropdown-toggle.btn-default.focus {
-			  color: #333;
+			  color: #00a1e9;
 			  background-color: #d4d4d4;
 			  border-color: #8c8c8c;
 			}
@@ -306,3 +308,142 @@
 			.open > .dropdown-toggle.btn-danger {
 			  background-image: none;
 			}
+			
+/*---------------checkbox 组件---还要引入对应的js-------------*/
+
+.shi-checkbox{
+	position: relative;
+	background: #fff;
+}
+.shi-checkbox .ord-bill-box1{
+	/*position: absolute;left: 0;
+	right: 0;*/
+	display: none;
+}
+.shi-checkbox{
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+.shi-checkbox .check-box-lab{
+	display: inline-block;
+	width:18px;height: 18px;
+	opacity: 0;
+}
+.shi-checkbox .check-box-lab::after{
+	content: '\2714';
+	color:#666;
+	margin-left: 4px;
+	font-size: 14px;
+}
+
+
+.shi-radio{
+	position: relative;
+	background: #fff;
+}
+.shi-radio .ord-bill-box1{
+	/*position: absolute;left: 0;
+	right: 0;*/
+	display: none;
+}
+.shi-radio{
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+.shi-radio .check-box-lab{
+	display: inline-block;
+	width:18px;height: 18px;
+	opacity: 0;
+}
+.shi-radio .check-box-lab::after{
+	content: '\2714';
+	color:#666;
+	margin-left: 4px;
+	font-size: 14px;
+}
+/*---------------checkbox 组件----------------*/
+
+	.shi-input{
+		width: 250px;height: 35px;
+		border-radius: 4px;
+		outline: none;
+		border: 1px solid #ddd;
+		padding-left:8px;
+		box-sizing: border-box;
+	}
+	.shi-select{
+		width: 250px;
+		display: inline-block;
+		position: relative;
+	}
+	.shi-select-input{
+		width: 100%;height: 35px;
+		border-radius: 4px;
+		outline: none;
+		border: 1px solid #ddd;
+		box-sizing: border-box;
+	}
+	.shi-select .ull{
+		box-sizing: border-box;
+			width:100%;
+			border-left: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+			display: none;
+			position: absolute;
+			left:0;top: 35px;
+			background: white;
+			overflow-x: hidden;
+	}
+	.shi-select ul{
+			box-sizing: border-box;
+			width:115%;
+			background: white;
+			text-align: left;
+		}
+		.shi-select ul li{
+			list-style: none;
+			padding: 5px 0px;
+			font-size: 14px;
+		}
+		.shi-select ul li:hover{
+			background: #00a1e9;
+		}
+/*---------------底部页码    翻页按钮    组件----------------*/
+.turn-page-btn-group{
+	display: flex;justify-content: flex-start;
+	align-items: center;
+	box-sizing: border-box;
+	background:white;
+} 
+
+.turn-page-btn-group p{
+	font-size: 14px;
+	color:#999;
+	font-family: "微软雅黑";
+}
+.turn-page-btn-group p span{
+	margin: 0 3px;
+}
+.turn-page-btn-group p:nth-child(2){
+	margin-left: 15px;
+	font-size: 12px;
+}
+.turn-page-btn-group p:first-child :first-child,.turn-page-btn-group p:first-child :last-child{
+	display: inline-block;
+	padding: 0 2px;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	background: white;
+	color:#00a1e9;
+	transform: scaleY(0.8);
+}
+.white-sky{
+	background:#00a1e9;
+}
+
+.white-sky p{	
+	color:white;
+}	

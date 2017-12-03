@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Language</title>
+		<!-- 引用三个js文件 language_cookie.js实现记忆功能 下一次用户刷新界面之后 记得之前用户使用了那个语种 -->
+	    <!--<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="jquery.localize.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="language_cookie.js" type="text/javascript" charset="utf-8"></script>-->
+	</head>
+	<body>
+		<div class="top_lan"> 
+          	<select id="ddlSomoveLanguage" onchange="chgLang()">
+               <option value="">LAGUAGE</option>
+               <option value="ja">日本</option>
+                <option value="en">ENGLISH</option>
+            </select>
+        </div>
+ 		<div id="prod_navright">
+            <ul>  <!--  data-localize="hpt.management"  固定写法 对应语言包文件中的key -->
+              <li><a data-localize="hpt.management" href="hospitality_management_ja.html" >MANAGEMENT</a></li>
+              <li><a data-localize="hpt.support" href="hospitality_support_ja.html">SUPPORT</a></li>
+              <li><a data-localize="hpt.tutorial" href="hospitality_tutorial_ja.html">TUTORIAL</a></li>
+              <li><a data-localize="hpt.features" href="hospitality_features_ja.html">FEATURES</a></li>
+            </ul>
+        </div>
+	</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	var name = "somoveLanguage";
+	function chgLang() {
+	    var value = $("#ddlSomoveLanguage").children('option:selected').val();
+	    SetCookie(name, value);
+	    console.log("come in chgLang" + name + value);
+	    location.reload();
+	}
+	function SetCookie(name, value) {
+	    var Days = 30; //此 cookie 将被保存 30 天
+	    var exp = new Date(); //new Date("December 31, 9998");
+	    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+	    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+	}
+	function getCookie(name){  //取cookies函数
+	    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+	    if (arr != null) return unescape(arr[2]);
+	    return null
+	}
+	$(function() {
+	    var uulanguage = (navigator.language || navigator.browserLanguage).toLowerCase();
+	    console.log("come in readly" + uulanguage);
+	
+	    if (uulanguage.indexOf("en") > -1) {
+	        $("[data-localize]").localize("text", {   //**主要的代码** jquery.localize.js 底层实现切换逻辑
+	            pathPrefix: "lang",
+	            language: "en"
+	        });
+	         console.log("come in en");
+	    } else if (uulanguage.indexOf("ja") > -1) {
+	        $("[data-localize]").localize("text", {
+	            pathPrefix: "lang",
+	            language: "ja"
+	        });
+	          console.log("come in ja");
+	    } else {
+	        $("[data-localize]").localize("text", {
+	            pathPrefix: "lang",
+	            language: "en"
+	        });
+	        console.log("come in moren en");
+	    };
+	     //根据cookie选择语言
+	    if (getCookie(name) != "") {
+	        if (getCookie(name) == "ja") {
+	            $("[data-localize]").localize("text", {
+	                pathPrefix: "lang",
+	                language: "ja"
+	            });
+	            console.log("come in cookie ja");
+	        }
+	        if (getCookie(name) == "en") {
+	            $("[data-localize]").localize("text", {
+	                pathPrefix: "lang",
+	                language: "en"
+	            });
+	            console.log("come in cookie en");
+	        }
+	    }
+});
+</script>

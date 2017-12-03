@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上传文件练习</title>
+		<style>
+			iframe{
+				border: 1px solid #ccc;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="upload-container" style="position:relative;">
+			<form id="upload-form" enctype="multipart/form-data" action="recieve-file.php" method='post' target="showphp">
+				<div class="upload-content" style="position: relative;width:600px;height: 50px;">
+				<input id='uploadf' type="file" class="uploadf" name='file' style="width:50%;height:100%;display: none;"/>
+				
+				<label for="uploadf" id="ti" style="width:50%;height:100%;">点击上传图片</label>
+				</div>
+				<button>提交</button>
+			</form>
+			<iframe name='showphp' width="800" height="600"></iframe>
+		</div>
+	</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+	
+//	function saveMsg() {
+//  var formData = new FormData($("#upload-form")[0]);
+//  $.ajax({
+//      async : flase,
+//      cache : flase,
+//      type : "post",
+//      data : formData,
+//      url : 'http://127.0.0.1/php-experence/recieve-file.php',
+//      dataType : 'json',
+//      contentType: false, //必须
+//      processData: false, //必须
+//      success : function(success) {
+//          console.log(success);
+//      },
+//      error : function(arg1, arg2, arg3) {
+//          console.log(arg1 + "--" + arg2 + "--" + arg3);
+//      }
+//  });
+//} 
+
+	
+</script>

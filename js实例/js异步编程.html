@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js异步编程</title>
+	</head>
+	<body>
+		<button id='btn1'>按钮一</button>
+		<button id='btn2'>按钮二</button>
+	</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+	//事件监听
+function f1(event,a,b,fun){
+		console.log(a,b);
+		fun();
+	}
+	$('#btn1').on('done',f1);
+	
+	function f2(){
+		setTimeout(function(){
+			$('#btn1').trigger('done',[1,2,function(){alert('this is f2')}]);
+		},1000)
+	}
+	f2();
+	var a=3||4;
+	console.log(a);
+</script>

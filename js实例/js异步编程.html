@@ -12,7 +12,7 @@
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script>
 	//事件监听
-function f1(event,a,b,fun){
+function f1(event,a,b,fun){//第一各参数一定是event.
 		console.log(a,b);
 		fun();
 	}
@@ -20,7 +20,7 @@ function f1(event,a,b,fun){
 	
 	function f2(){
 		setTimeout(function(){
-			$('#btn1').trigger('done',[1,2,function(){alert('this is f2')}]);
+			$('#btn1').trigger('done',[1,2,function(){alert('this is f2')}]);//第二个参数是数组，里面各项是函数的形参的值
 		},1000)
 	}
 	f2();

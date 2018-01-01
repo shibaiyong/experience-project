@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function Method(){
+
+    }
+    var method=new Method();
+    var obj={};
+    var arr=[];
+    method.a="shibaiyong";
+    method.write=function(){
+        alert("i is obj method")
+    }
+    var constructor=method.constructor;
+    var objconstructor=obj.constructor;
+    var arrconstructor=arr.constructor;
+    //console.log(constructor===Method)//ture;
+    //console.log(objconstructor===Object);
+    //console.log(arrconstructor===Array);
+    var extendSys=[
+        {path:'user',name:'usercom',component:'User'},
+        {path:'user1',name:'usercom1',component:'User1'}
+    ]
+    var extendSys1=[
+        ...extendSys
+    ]
+    
+</script>

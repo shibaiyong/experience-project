@@ -15,10 +15,11 @@ module.exports = {
 		filename:'app.js'
 	},
 	devServer:{//配置热更新服务器
-		contentBase:'./build',
-		host:'localhost',
-		port:9000,
-		historyApiFallback:false
+		// contentBase:'./build',
+		// host:'localhost',
+		// port:9000,
+        // historyApiFallback:false
+        inline:true
 	},
 	plugins:[
 		//让index.html也能打包过去，并且能主动的引上对应的文件
@@ -38,14 +39,7 @@ module.exports = {
 	],
 	module:{
 		loaders:[
-//			{
-//				test:/\.css$/,
-//				loader:'style-loader!css-loader'
-//			},
-//			{
-//				test:/\.scss$/,
-//				loader:'style-loader!css-loader!sass-loader'
-//			},
+
 			{
 				test:/\.css$/,
 				loader:ExtractTextPlugin.extract({

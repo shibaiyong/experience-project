@@ -4,9 +4,9 @@ require("./styles/app.scss")
 
 //入口文件，不能当做单纯的js
 
-//var React = require('react')
+var React = require('react')
 //
-//var ReactDOM = require("react-dom")
+var ReactDOM = require("react-dom")
 
 
 var RootComponent = require("./scripts/components/RootComponent")

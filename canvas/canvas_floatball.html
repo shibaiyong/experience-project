@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小球浮动</title>
+    <style>
+        body,html{
+            margin:0;
+            padding:0;
+        }
+        
+        #bubble{
+            display: block;
+            background: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bubble"></canvas>
+</body>
+
+</html>
+<script type="text/javascript">
+    var canvas = document.querySelector("#bubble");
+	var w,h
+        w = window.innerWidth;//浏览器宽度
+        h = window.innerHeight;//浏览器高度
+        canvas.width = w;
+        canvas.height = h;
+	(function setsize(){
+        window.onresize = function () {
+            w = window.innerWidth;//浏览器宽度
+            h = window.innerHeight;//浏览器高度
+            canvas.width = w;
+            canvas.height = h;
+        }
+    })()
+	var canCon = canvas.getContext("2d");//获取宣纸
+	var aColor = ["#CCCCFF","#66CCFF","#FF9999","#FF0033"];
+	var aBubble = [];
+
+
+//面向对象编程
+	function random(min,max){
+		return Math.random()*(max-min)+min;
+	}
+	function Bubble(){}
+            Bubble.prototype = {
+                init: function(){
+                this.x = random(0, w);//0~w x坐标 圆心
+                this.y = random(0,h);//0-h y坐标 圆心
+				this.r = random(10,100);//小球半径
+				this.color = aColor[Math.floor(random(0,3))];//小球颜色;
+				this.mx = random(-2,2);//小球x坐标一次移多少
+				this.my = random(-2,2);//小球y坐标一次移多少
+			},
+			draw:function(){
+                canCon.beginPath()//抬笔
+				canCon.fillStyle=this.color;//拿笔沾上墨水 style是墨、fill是笔
+				canCon.arc(this.x,this.y,this.r,0,2*Math.PI);//构思圆心和半径
+				canCon.fill()
+			},
+			move:function(){
+                this.x += this.mx;
+                this.y += this.my;
+				if(this.x-this.r<0||this.x+this.r>w){
+                this.mx = -this.mx;
+            }
+				if(this.y-this.r<0||this.y+this.r>w){
+                this.my = -this.my;
+            }
+				this.draw();
+			}
+		}//小球
+		//服用
+		function create(num){
+			for(var y = 0;y<num; y++){
+				var bubble = new Bubble();//生出一个小球球
+				bubble.init();
+				bubble.draw();
+				aBubble.push(bubble)//
+			}
+		}
+		create(150);
+		setInterval(function(){
+            canCon.clearRect(0, 0, w, h)
+			for(var item of aBubble){
+                console.log(item)
+				item.move();
+			}
+		},1000/60)
+</script>

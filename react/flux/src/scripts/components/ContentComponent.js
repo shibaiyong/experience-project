@@ -1,4 +1,4 @@
-
+var React = require('react')
 
 var ContentComponent = React.createClass({
 	render:function(){

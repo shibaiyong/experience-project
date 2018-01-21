@@ -1,4 +1,4 @@
-
+var React = require('react')
 
 var HeaderComponent = React.createClass({
 	render:function(){

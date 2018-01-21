@@ -1,6 +1,6 @@
 
 
-//var React = require('react')
+var React = require('react')
 
 var HeaderComponent = require("./HeaderComponent")
 var NavComponent = require("./NavComponent")
